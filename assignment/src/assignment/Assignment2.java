@@ -7,7 +7,27 @@ import java.util.*;
 
 public class Assignment2 
 {
-	
+//output of this method will be like this 
+//Jul = 2
+//
+//Oct = 1
+//
+//Aug = 6
+//
+//Jun = 2
+//
+//Feb = 1
+//
+//Dec = 2
+//
+//Nov = 2
+//
+//May = 1
+//
+//Jan = 1
+//
+//Mar = 2
+//	
 	public void printFileCount() throws IOException 
 	{
 		String FOLDER_PATH = "C:\\Users\\madhu\\Desktop";
