@@ -30,7 +30,7 @@ public class Assignment2
 //	
 	public void printFileCount() throws IOException 
 	{
-		String FOLDER_PATH = "C:\\Users\\madhu\\Desktop";
+		String FOLDER_PATH = "E:\\Desktop\\SHAREit\\Redmi Note 4\\file";
 		File dir = new File(FOLDER_PATH);
 
 		File[] files = dir.listFiles(new FileFilter() {
@@ -47,25 +47,25 @@ public class Assignment2
 			});
 
 		SimpleDateFormat sdf = new SimpleDateFormat("MMM");
-		Map<String,Integer> fileCount = new HashMap<String,Integer>();
-
-		for(File f:files)
-		{
-			
-			String month = sdf.format(f.lastModified());
-			if(fileCount.get(month) == null){
-				fileCount.put(month,1);
-			}else{
-				fileCount.put(month,fileCount.get(month)+1);
-			}
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Map<String,File> fileCount = new HashMap<String,File>();
+        for(File f:files)
+        {
+           String month = sdf.format(f.lastModified());
+           if(fileCount.get(month) == null){
+              fileCount.put(month,f);
+            }else{
+                 Date d = new Date(fileCount.get(month).lastModified());
+                 Date d1 = new Date(f.lastModified());
+                 if(d.compareTo(d1) > 0)
+                 fileCount.put(month,f);
+                  }
+        }   
+       Iterator<Map.Entry<String, File>> itr = fileCount.entrySet().iterator();
+		while(itr.hasNext())		
+		{		
+		Map.Entry<String, File> entry = itr.next();		
+		System.out.println(entry.getKey() +" = " + entry.getValue().getName()+"  "+sdf1.format(entry.getValue().lastModified()));		
 		}
-		
-		Iterator<Map.Entry<String, Integer>> itr = fileCount.entrySet().iterator(); 
-          
-        while(itr.hasNext()) 
-        { 
-             Map.Entry<String, Integer> entry = itr.next(); 
-             System.out.println(entry.getKey() +" = " + entry.getValue()); 
-        } 
 	}
 }
